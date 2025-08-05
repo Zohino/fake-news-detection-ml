@@ -39,7 +39,7 @@ This repository is a term paper for Introduction to Machine Learning course of U
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── detection   <- Source code for use in this project.
+└── src   <- Source code for use in this project.
     │
     ├── __init__.py             <- Makes detection a Python module
     │
