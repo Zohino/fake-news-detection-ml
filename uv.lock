@@ -283,43 +283,6 @@ wheels = [
 ]
 
 [[package]]
-name = "detection"
-version = "0.0.1"
-source = { editable = "." }
-dependencies = [
-    { name = "ipython" },
-    { name = "jupyterlab" },
-    { name = "loguru" },
-    { name = "matplotlib" },
-    { name = "notebook" },
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "pip" },
-    { name = "python-dotenv" },
-    { name = "ruff" },
-    { name = "scikit-learn" },
-    { name = "tqdm" },
-    { name = "typer" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "ipython" },
-    { name = "jupyterlab" },
-    { name = "loguru" },
-    { name = "matplotlib" },
-    { name = "notebook" },
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "pip" },
-    { name = "python-dotenv" },
-    { name = "ruff" },
-    { name = "scikit-learn" },
-    { name = "tqdm" },
-    { name = "typer" },
-]
-
-[[package]]
 name = "executing"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1463,6 +1426,51 @@ sdist = { url = "https://files.pythonhosted.org/packages/3f/f4/4a80cd6ef364b2e8b
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e7/9c/0e6afc12c269578be5c0c1c9f4b49a8d32770a080260c333ac04cc1c832d/soupsieve-2.7-py3-none-any.whl", hash = "sha256:6e60cc5c1ffaf1cebcc12e8188320b72071e922c2e897f737cadce79ad5d30c4", size = 36677, upload-time = "2025-04-20T18:50:07.196Z" },
 ]
+
+[[package]]
+name = "src"
+version = "0.0.1"
+source = { editable = "." }
+dependencies = [
+    { name = "ipython" },
+    { name = "jupyterlab" },
+    { name = "loguru" },
+    { name = "matplotlib" },
+    { name = "notebook" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pip" },
+    { name = "python-dotenv" },
+    { name = "ruff" },
+    { name = "scikit-learn" },
+    { name = "tqdm" },
+    { name = "typer" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipykernel" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "ipython" },
+    { name = "jupyterlab" },
+    { name = "loguru" },
+    { name = "matplotlib" },
+    { name = "notebook" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pip" },
+    { name = "python-dotenv" },
+    { name = "ruff" },
+    { name = "scikit-learn" },
+    { name = "tqdm" },
+    { name = "typer" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ipykernel", specifier = ">=6.30.1" }]
 
 [[package]]
 name = "stack-data"
