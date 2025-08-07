@@ -1,30 +1,25 @@
-from pathlib import Path
-
+from config import DATA_FILES, PREDICTIONS_DIR, TRAINED_MODELS_DIR
 from loguru import logger
-from tqdm import tqdm
-import typer
-
-from detection.config import MODELS_DIR, PROCESSED_DATA_DIR
-
-app = typer.Typer()
+from modeling import predict
+import pandas as pd
 
 
-@app.command()
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    features_path: Path = PROCESSED_DATA_DIR / "test_features.csv",
-    model_path: Path = MODELS_DIR / "model.pkl",
-    predictions_path: Path = PROCESSED_DATA_DIR / "test_predictions.csv",
-    # -----------------------------------------
-):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Performing inference for model...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Inference complete.")
-    # -----------------------------------------
+def main():
+    logger.info("Loading test data...")
+    test_df = pd.read_csv(DATA_FILES["test_processed"])
+    X_test = test_df["cleaned_text"]
+
+    model_path = TRAINED_MODELS_DIR / "fake_news_detector.pkl"
+    results_df = predict(model_path, X_test)
+    results_df["id"] = test_df["id"]
+
+    output_path = PREDICTIONS_DIR / "test_predictions.csv"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    results_df.to_csv(output_path, index=False)
+
+    logger.info(f"Predictions saved to {output_path}")
+    logger.info(f"Class distribution:\n{results_df['label'].value_counts()}")
 
 
 if __name__ == "__main__":
-    app()
+    main()
