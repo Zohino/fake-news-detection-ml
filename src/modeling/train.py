@@ -1,13 +1,14 @@
-from config import DATA_FILES, TRAINED_MODELS_DIR
 from loguru import logger
-from modeling import train_model
 import pandas as pd
+
+from src.config import DATA_FILES, TRAINED_MODELS_DIR
+from src.modeling.modeling import train_model
 
 
 def main():
     logger.info("Loading training and validation datasets...")
     train_df = pd.read_csv(DATA_FILES["train_processed"])
-    val_df = pd.read_csv(DATA_FILES["validation_processed"])
+    val_df = pd.read_csv(DATA_FILES["test_processed"])
 
     X_train = train_df["cleaned_text"]
     y_train = train_df["label"]

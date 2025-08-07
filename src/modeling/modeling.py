@@ -1,6 +1,5 @@
 from pathlib import Path
 
-from config import MODEL_PARAMS
 from joblib import dump, load
 from loguru import logger
 import pandas as pd
@@ -8,6 +7,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
 from sklearn.pipeline import Pipeline
+
+from src.config import MODEL_PARAMS
 
 
 def build_pipeline() -> Pipeline:
