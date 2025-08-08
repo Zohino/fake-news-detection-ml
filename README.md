@@ -106,7 +106,7 @@ make clean
 │   ├── 0.1-mz-initial-eda.ipynb
 │   ├── 1.1-mz-data-cleaning-and-feature-creation.ipynb
 │   ├── 2.1-mz-visualization.ipynb
-|   ├── 3.1-mz-modeling.ipynb
+│   ├── 3.1-mz-modeling.ipynb
 │   └── 4.1-mz-publication.ipynb
 ├── pyproject.toml     <- Project configuration file with package metadata
 │
@@ -116,7 +116,7 @@ make clean
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment
 │
 ├── uv.lock
-|
+│
 └── src          <- Source code for use in this project
     ├── __init__.py
     ├── config.py               <- Project-wide configuration and constants
