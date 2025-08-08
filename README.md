@@ -121,11 +121,11 @@ make clean
     ├── __init__.py
     ├── config.py               <- Project-wide configuration and constants
     ├── dataset.py              <- Scripts to download or generate data
-    ├── modeling/
-    │   ├── __init__.py         
-    |   ├── modeling.py
-    │   ├── train.py            <- Train models
-    └   └── predict.py          <- Run model inference
+    └── modeling/
+        ├── __init__.py         
+        ├── modeling.py
+        ├── train.py            <- Train models
+        └── predict.py          <- Run model inference
 ```
 
 ## 📓 Notebooks Overview
