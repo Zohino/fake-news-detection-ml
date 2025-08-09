@@ -79,6 +79,15 @@ MODEL_PARAMS = {
         "solver": "liblinear",
         "class_weight": "balanced",
     },
+    "random_forest": {
+        "n_estimators": 100,
+        "max_depth": 20,
+        "min_samples_split": 5,
+        "min_samples_leaf": 2,
+        "random_state": 42,
+        "class_weight": "balanced",
+        "n_jobs": -1,
+    },
     "train_test_split": {"test_size": 0.2, "random_state": 42, "stratify": True},
 }
 
@@ -86,16 +95,48 @@ TEXT_PREPROCESSING = {
     "remove_punctuation": True,
     "convert_to_lowercase": True,
     "remove_numbers": True,
+    "remove_urls": True,  # NEW: Remove URLs
+    "remove_emails": True,  # NEW: Remove email addresses
+    "remove_html_tags": True,  # NEW: Remove HTML tags
     "remove_extra_whitespace": True,
-    "min_text_length": 10,
+    "min_text_length": 20,  # Increased minimum length
+    "remove_stopwords": True,  # NEW: Explicit stopword removal
+    "lemmatize": False,  # Keep False to avoid NLTK dependency issues
+    "min_word_length": 3,  # NEW: Minimum word length
 }
 
 RANDOM_SEEDS = {"general": 42, "train_split": 42, "model_training": 42}
 
-EVALUATION_METRICS = ["accuracy", "precision", "recall", "f1_score", "roc_auc"]
+EVALUATION_METRICS = [
+    "accuracy",
+    "precision",
+    "recall",
+    "f1_score",
+    "roc_auc",
+    "cv_f1_mean",
+    "cv_f1_std",
+]
+
+FEATURE_ENGINEERING = {
+    "create_length_features": True,
+    "create_punctuation_features": True,
+    "create_readability_features": True,
+    "create_capitalization_features": True,
+    "normalize_features": True,
+}
+
+# Model selection settings
+MODEL_SELECTION = {
+    "use_cross_validation": True,
+    "cv_folds": 5,
+    "scoring_metric": "f1",
+    "test_multiple_models": True,
+    "use_ensemble": True,
+    "ensemble_voting": "soft",
+}
 
 PLOT_SETTINGS = {
-    "figure_size": (10, 6),
+    "figure_size": (12, 8),  # Increased size
     "dpi": 300,
     "style": "seaborn-v0_8",
     "color_palette": "husl",
