@@ -63,14 +63,22 @@ DATA_FILES = {
 # Model and preprocessing config
 MODEL_PARAMS = {
     "tfidf": {
-        "max_features": 5000,
-        "min_df": 2,
-        "max_df": 0.95,
-        "ngram_range": (1, 2),
+        "max_features": 10000,
+        "min_df": 3,
+        "max_df": 0.85,
+        "ngram_range": (1, 3),
         "stop_words": "english",
         "sublinear_tf": True,
+        "analyzer": "word",
+        "token_pattern": r"\b[a-zA-Z]{3,}\b",
     },
-    "logistic_regression": {"C": 1.0, "max_iter": 1000, "random_state": 42, "solver": "liblinear"},
+    "logistic_regression": {
+        "C": 2.0,
+        "max_iter": 2000,
+        "random_state": 42,
+        "solver": "liblinear",
+        "class_weight": "balanced",
+    },
     "train_test_split": {"test_size": 0.2, "random_state": 42, "stratify": True},
 }
 
