@@ -50,5 +50,6 @@ force-sort-within-sections = true
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.1",
+    "papermill>=2.6.0",
 ]
 
