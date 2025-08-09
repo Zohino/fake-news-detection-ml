@@ -15,7 +15,7 @@ app = typer.Typer()
 
 
 def download_file(url: str, dest: Path, chunk_size: int = 8192) -> bool:
-    """Download file from URL with progress bar."""
+    """Download file from URL."""
     try:
         dest.parent.mkdir(parents=True, exist_ok=True)
         response = requests.get(url, stream=True)
@@ -45,7 +45,7 @@ def validate_dataset(path: Path, expected_columns: list) -> bool:
         if missing:
             logger.warning(f"Missing columns in {path.name}: {missing}")
             return False
-        logger.info(f"{path.name} validated ✓")
+        logger.success(f"{path.name} validated.")
         return True
     except Exception as e:
         logger.error(f"Validation failed for {path.name}: {e}")
@@ -54,8 +54,8 @@ def validate_dataset(path: Path, expected_columns: list) -> bool:
 
 def download_fake_news_data(force: bool = False) -> bool:
     """Download and validate training and test datasets."""
-    train_expected = ["statement", "label"]
-    test_expected = ["statement", "label"]
+    train_expected = ["Statement", "Label"]
+    test_expected = ["Statement", "Label"]
     success = True
 
     tasks = [
@@ -71,7 +71,7 @@ def download_fake_news_data(force: bool = False) -> bool:
             ):
                 success = False
         else:
-            logger.info(f"{file_path.name} already exists")
+            logger.warning(f"{file_path.name} already exists")
 
     if success:
         print_dataset_info()
@@ -84,11 +84,11 @@ def print_dataset_info():
         path = DATA_FILES[name]
         if path.exists():
             df = pd.read_csv(path)
-            logger.info(
+            print(
                 f"{name}: shape={df.shape}, columns={list(df.columns)}, missing={df.isnull().sum().sum()}"
             )
             if "label" in df.columns:
-                logger.info(f"Class distribution: {df['label'].value_counts().to_dict()}")
+                print(f"Class distribution: {df['label'].value_counts().to_dict()}")
 
 
 def check_data_availability() -> dict:
@@ -109,7 +109,7 @@ def check():
     """Check if raw datasets exist locally."""
     status = check_data_availability()
     for name, info in status.items():
-        symbol = "✅" if info["exists"] else "❌"
+        symbol = "OK" if info["exists"] else "X"
         size = f"({info['size']} bytes)" if info["exists"] else ""
         print(f"{name}: {symbol} {size}")
 
@@ -122,10 +122,10 @@ def download(
 ):
     """Download datasets (train/test)."""
     if download_fake_news_data(force=force):
-        print("\n🎉 Download complete.")
-        print("Next: run `make dataset` or explore `notebooks/`.")
+        logger.success("\nDownload complete.")
+        print("Next: run make dataset.")
     else:
-        print("\n❌ Download failed. See logs.")
+        logger.error("\nDownload failed. See logs.")
 
 
 if __name__ == "__main__":
