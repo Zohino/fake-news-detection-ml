@@ -10,6 +10,14 @@ data/**
 # Logs
 /logs
 
+# Models
+models/*
+models/**
+!models/
+!models/**
+!models/**/.gitkeep
+
+
 # Mac OS-specific storage files
 .DS_Store
 
