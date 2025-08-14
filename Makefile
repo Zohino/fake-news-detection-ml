@@ -64,9 +64,14 @@ features: preprocess
 visualize: features
 	$(VENV_ACTIVATE) && papermill notebooks/2.1-mz-visualization.ipynb notebooks/2.1-mz-visualization.ipynb
 
+## Run modeling notebook
+.PHONY: modeling
+modeling: visualize
+	$(VENV_ACTIVATE) && papermill notebooks/3.1-mz-modeling.ipynb notebooks/3.1-mz-modeling.ipynb
+
 ## Run all notebooks in sequence
 .PHONY: notebooks
-notebooks: eda features visualize
+notebooks: eda features visualize modeling
 
 ## Run complete ML pipeline
 .PHONY: pipeline
