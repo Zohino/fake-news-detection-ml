@@ -59,6 +59,7 @@ make notebooks
 make eda                    # First exploratory data analysis
 make features               # Explore dataset features
 make visualize              # Dataset visualization
+make modeling               # Model training and predictions
 
 # Additional make utilities
 make clean                  # Delete compiled Python files
@@ -90,6 +91,7 @@ python3 src/modeling/predict.py
 papermill notebooks/0.1-mz-initial-eda.ipynb notebooks/0.1-mz-initial-eda.ipynb
 papermill notebooks/1.1-mz-data-cleaning-and-feature-creation.ipynb
 papermill notebooks/2.1-mz-visualization.ipynb
+papermill notebooks/3.1-mz-modeling.ipynb
 
 # Additional ruff usage for linting and formatting
 ruff check --fix
@@ -124,6 +126,7 @@ After that, explore each notebook or read the [report](reports/report.md) (in Cz
 │   ├── 0.1-mz-initial-eda.ipynb
 │   ├── 1.1-mz-data-cleaning-and-feature-creation.ipynb     
 │   ├── 2.1-mz-visualization.ipynb
+│   ├── 3.1-mz-modeling.ipynb
 ├── pyproject.toml                      <- Project configuration file with package metadata
 ├── reports                             <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   ├── figures                         <- Generated graphics and figures to be used in reporting
@@ -148,11 +151,12 @@ After that, explore each notebook or read the [report](reports/report.md) (in Cz
 
 ## Notebooks Overview
 
-| Notebook                                  | Purpose|
+| Notebook                                  | Purpose                                   |
 |-------------------------------------------|-------------------------------------------|
 |0.1-mz-initial-eda                         | Exploratory data analysis                 |
 |1.1-mz-data-cleaning-and-feature-creation  | Cleaning dataset and exploring features   |
 |2.1-mz-visualization                       | Plots and graphics                        |
+|3.1-mz-modeling.ipynb                      | Model training and inference              |
 
 ## Reproducibility
 
