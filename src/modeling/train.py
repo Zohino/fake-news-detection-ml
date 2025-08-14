@@ -200,9 +200,9 @@ def main():
             logger.warning("High variance across folds - consider more data")
 
     logger.info(f"Training complete! Model saved to: {model_path}")
-    print("Next step:")
-    print("   1. Run predictions: make predict")
-    print("   2. Profit")
+    print("Next run predictions:")
+    print("   1. make predict")
+    print("   2. notebook modeling cell prediction")
 
 
 if __name__ == "__main__":

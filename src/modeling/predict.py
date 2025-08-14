@@ -1,5 +1,5 @@
 from loguru import logger
-from modeling import predict
+from src.modeling.modeling import predict
 import pandas as pd
 
 from src.config import DATA_FILES, PREDICTIONS_DIR, TRAINED_MODELS_DIR
